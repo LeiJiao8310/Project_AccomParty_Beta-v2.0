@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card"
+    tools:context=".Login_activity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/purpleLogin"
+        android:layout_width="238dp"
+        android:layout_height="62dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/btnstyle"
+        android:text="@string/Login"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/centerWhite" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="114dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/accomlogo"
+        app:layout_constraintBottom_toTopOf="@+id/centerWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/centerWhite"
+        android:layout_width="281dp"
+        android:layout_height="378dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/white"
+        app:layout_constraintBottom_toTopOf="@+id/purpleLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_logo" />
+
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:background="@drawable/edtstyle"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/login_password"
+        app:layout_constraintEnd_toEndOf="@+id/centerWhite"
+        app:layout_constraintStart_toStartOf="@+id/centerWhite"
+        app:layout_constraintTop_toTopOf="@+id/centerWhite" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edtstyle"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/centerWhite"
+        app:layout_constraintEnd_toEndOf="@+id/centerWhite"
+        app:layout_constraintStart_toStartOf="@+id/centerWhite"
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="71dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/purpleLogin"
+        app:layout_constraintEnd_toEndOf="@+id/purpleLogin"
+        app:layout_constraintStart_toStartOf="@+id/purpleLogin"
+        app:layout_constraintTop_toTopOf="@+id/purpleLogin" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Project_AccomParty</string>
+    <string name="Login">Log In</string>
+    <string name="input_error_name">Name cannot be empty</string>
+    <string name="input_error_email">Email cannot be empty</string>
+    <string name="input_error_email_invalid">Email entered is invalid</string>
+    <string name="input_error_password">Password cannot be empty</string>
+    <string name="input_error_password_length">Password length must be greater than 6</string>
+    <string name="registration_success">User account registered successfully!</string>
+    <string name="login_failure">Email and password do not match. Please try again.</string>
+    <string name="title_activity_map_tracking">Map</string>
+</resources>
