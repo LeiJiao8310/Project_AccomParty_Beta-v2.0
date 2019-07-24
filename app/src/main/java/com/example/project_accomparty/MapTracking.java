@@ -28,7 +28,7 @@ public class MapTracking extends FragmentActivity implements OnMapReadyCallback 
 
     private GoogleMap mMap;
     private  String email;
-    DatabaseReference locations;
+    DatabaseReference locations, parties;
     Double lat,lng;
     String src;
 
@@ -41,8 +41,9 @@ public class MapTracking extends FragmentActivity implements OnMapReadyCallback 
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //Ref to firebase first
+        //Ref to Firebase first
         locations = FirebaseDatabase.getInstance().getReference("Locations");
+        parties = FirebaseDatabase.getInstance().getReference("Party");
 
         //Get Intent
         if(getIntent()!=null)
@@ -53,11 +54,51 @@ public class MapTracking extends FragmentActivity implements OnMapReadyCallback 
             src = getIntent().getStringExtra("src");
         }
         if(!TextUtils.isEmpty(email)) {
-            if(src.equals("list"))
+            if(src.equals("list")) {
                 loadLocationsForThisUser(email);
-            else
+                loadLocationsForAllParties();
+            }else {
                 loadLocationsForAllUsers();
+                loadLocationsForAllParties();
+            }
         }
+    }
+
+    private void loadLocationsForAllParties() {
+        parties.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Party party = postSnapshot.getValue(Party.class);
+
+                    //add marker for other people location
+                    LatLng friendLocation = new LatLng(Double.parseDouble(party.getLat()), Double.parseDouble(party.getLng()));
+
+
+                    Location currentUser = new Location("");
+                    currentUser.setLatitude(lat);
+                    currentUser.setLongitude(lng);
+
+
+                    Location lParty = new Location("");
+                    lParty.setLatitude(Double.parseDouble(party.getLat()));
+                    lParty.setLongitude(Double.parseDouble(party.getLng()));
+
+                    distance(currentUser, lParty);
+                    mMap.addMarker(new MarkerOptions().position(friendLocation).title(party.getName()).snippet("Distance: " + new DecimalFormat("#.#").format((currentUser.distanceTo(lParty)) / 1000) + "km").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), 12.0f));
+
+                }
+                //marker for current user
+                LatLng current = new LatLng(lat, lng);
+                mMap.addMarker(new MarkerOptions().position(current).title(FirebaseAuth.getInstance().getCurrentUser().getEmail()));
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void loadLocationsForAllUsers() {

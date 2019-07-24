@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Party {
     // coordinates
-    double lat, lng;
-    String name, host, address, type, description;
+    private String lat, lng;
+    private String name, host, address, type, description;
     // Boolean for split cost and double for cost
-    boolean split;
-    String cost;
+    private boolean split;
+    private String cost;
 
     public Party(){
 
@@ -22,8 +22,6 @@ public class Party {
         this.name = name;
         this.host = host;
         this.address = address;
-        this.lat = 0.0;
-        this.lng = 0.0;
         this.type = type;
         this.description = description;
         this.split = false;
@@ -35,19 +33,17 @@ public class Party {
         this.name = name;
         this.host = host;
         this.address = address;
-        this.lat = 0.0;
-        this.lng = 0.0;
         this.type = type;
         this.description = description;
         this.split = true;
         this.cost = cost;
     }
 
-    public double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public double getLng() {
+    public String getLng() {
         return lng;
     }
 
@@ -83,7 +79,7 @@ public class Party {
         this.name = name;
     }
 
-    public void setddress(String address){
+    public void setAddress(String address){
         this.address = address;
     }
 
@@ -97,11 +93,11 @@ public class Party {
         this.cost = cost;
     }
 
-    public void setLat(double lat){
+    public void setLat(String lat){
         this.lat = lat;
     }
 
-    public void setLng(double lng){
+    public void setLng(String lng){
         this.lng = lng;
     }
 }

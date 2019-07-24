@@ -53,7 +53,7 @@ public class CreateParty extends AppCompatActivity {
         cost = findViewById(R.id.np_cost);
         cost.setVisibility(View.INVISIBLE);
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference user = firebaseDatabase.getInstance().getReference("Users").child(uid);
+        DatabaseReference user = FirebaseDatabase.getInstance().getReference("Users").child(uid);
         user.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -66,7 +66,7 @@ public class CreateParty extends AppCompatActivity {
             }
         });
 
-        databaseReference = firebaseDatabase.getInstance().getReference().child("Party");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Party");
 
         split.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -141,10 +141,8 @@ public class CreateParty extends AppCompatActivity {
                 try {
                     address = coder.getFromLocationName(s_address, 1);
                     Address location = address.get(0);
-                    double lat = location.getLatitude();
-                    double lng = location.getLongitude();
-                    information.setLat(lat);
-                    information.setLng(lng);
+                    information.setLat(Double.toString(location.getLatitude()));
+                    information.setLng(Double.toString(location.getLongitude()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -152,18 +150,9 @@ public class CreateParty extends AppCompatActivity {
                         .push().setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Tracking infot = new Tracking(information.getName(), information.getHost(), Double.toString(information.getLat()), Double.toString(information.getLng()));
-                        FirebaseDatabase.getInstance().getReference("Locations")
-                                .push().setValue(infot).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Log.d(TAG,"part4 done checked");
-                                Toast.makeText(CreateParty.this, "Created successfully!", Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-                        });
-
-
+                        Log.d(TAG,"part4 done checked");
+                        Toast.makeText(CreateParty.this, "Created successfully!", Toast.LENGTH_LONG).show();
+                        finish();
                     }});
             }
         });

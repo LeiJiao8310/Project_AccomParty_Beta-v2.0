@@ -12,7 +12,7 @@ public class ListOnlineViewHolder extends RecyclerView.ViewHolder implements Vie
 
     public ListOnlineViewHolder(View itemView) {
         super(itemView);
-        txtEmail = (TextView)itemView.findViewById(R.id.txt_email);
+        txtEmail = itemView.findViewById(R.id.txt_email);
         itemView.setOnClickListener(this);
 
     }

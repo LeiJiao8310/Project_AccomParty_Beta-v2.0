@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Signup_activity extends AppCompatActivity {
 
     Button gosignup,goClearAll;
-    ;
     EditText signupEmail, signuppass, signupusername,signupPhoneNum,signupCityName;
     ProgressBar signupbar;
     DatabaseReference databaseReference;
@@ -47,7 +46,7 @@ public class Signup_activity extends AppCompatActivity {
         gosignup = findViewById(R.id.signup_signupBut);
         goClearAll = findViewById(R.id.signup_clear);
 
-        databaseReference = firebaseDatabse.getInstance().getReference("Users");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         firebaseAuth = FirebaseAuth.getInstance();
 
         goClearAll.setOnClickListener(new View.OnClickListener() {

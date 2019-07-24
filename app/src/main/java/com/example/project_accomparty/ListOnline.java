@@ -65,13 +65,13 @@ public class ListOnline extends AppCompatActivity implements GoogleApiClient.Con
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_online);
-        listOnline = (RecyclerView)findViewById(R.id.listOnline);
+        listOnline = findViewById(R.id.listOnline);
         listOnline.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         listOnline.setLayoutManager(layoutManager);
 
         //set tool bar and layout / join menu
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolBar);
+        Toolbar toolbar = findViewById(R.id.toolBar);
        // toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
         toolbar.setTitle("Your friends Onine");
         setSupportActionBar(toolbar);
@@ -209,7 +209,6 @@ public class ListOnline extends AppCompatActivity implements GoogleApiClient.Con
                             });
                             AlertDialog alrt = bd1.create();
                             alrt.show();
-;
 
 
                         }
