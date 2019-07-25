@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_wild"
-        android:title="Go wild"/>
+        android:title="Go Wild" />
     <item
         android:id="@+id/action_add"
         android:title="Create Party"/>
     <item
         android:id="@+id/action_join"
-        android:title="Hide myyself"/>
+        android:title="Hide Myself" />
     <item
         android:id ="@+id/action_log_out"
         android:title="Log Out" />

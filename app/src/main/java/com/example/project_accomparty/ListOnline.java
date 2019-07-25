@@ -283,12 +283,12 @@ public class ListOnline extends AppCompatActivity implements GoogleApiClient.Con
                 break;
             case R.id.action_join :
                 if(!show) {
-                    item.setTitle("Hide myself");
+                    item.setTitle("Hide Myself");
                     show = true;
                     counterRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(new Users(FirebaseAuth.getInstance().getCurrentUser().getEmail(), "Online"));
                 }else{
                     show = false;
-                    item.setTitle("Show myself");
+                    item.setTitle("Show Myself");
                     currentUserRef.removeValue();
                 }
                 break;
